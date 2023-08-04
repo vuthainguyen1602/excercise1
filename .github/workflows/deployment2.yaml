@@ -20,7 +20,8 @@ jobs:
         run: npm ci
       - name: Test code
         run: npm run test
-  build: 
+  build:
+    runs-on: ubuntu-latest 
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -35,7 +36,6 @@ jobs:
           path: 
             dist
             package.json
-
   deploy:
     needs: test
     runs-on: ubuntu-latest
