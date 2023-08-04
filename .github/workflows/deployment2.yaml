@@ -20,6 +20,22 @@ jobs:
         run: npm ci
       - name: Test code
         run: npm run test
+  build: 
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependancies
+        run: npm ci 
+      - name: Build website
+        run: npm run build
+      - name: Upload artifacts 
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-files
+          path: 
+            dist
+            package.json
+
   deploy:
     needs: test
     runs-on: ubuntu-latest
